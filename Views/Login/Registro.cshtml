@@ -5,13 +5,68 @@
 }
 <!DOCTYPE html>
 
-<html>
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Registrarse</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registrarse - Asadero de Pollos</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Agrega Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-MQZXc5V5qoyaa1XxFJeNn4g7Oi6VHR24T8e7tIyIA34S66t5pZZ9NT6Sy38Mk3x9i5sLV/JFUdRkseuU/mQkgQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            background-color: #ffd700;
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #ffeb3b;
+            border-bottom: 1px solid #ffd700;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            padding: 15px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+            border-radius: 5px;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border: 1px solid #c82333;
+            }
+
+        .btn-link {
+            color: #dc3545;
+        }
+
+            .btn-link:hover {
+                color: #c82333;
+            }
+    </style>
 </head>
 <body>
+
     <div class="container mt-5 pt-5">
 
         <div class="row justify-content-center">
@@ -19,29 +74,40 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Registrate
+                        <i class="fas fa-drumstick-bite"></i> 😁 Regístrate
                     </div>
                     <div class="card-body">
 
                         <form asp-controller="Login" asp-action="Registro" method="post" enctype="multipart/form-data">
 
                             <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="Nombre" required />
+                            <!-- Agrega ícono al campo de nombre -->
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
                             <input class="form-control mb-3" type="text" placeholder="Correo" required asp-for="Correo" />
+                            <!-- Agrega ícono al campo de correo -->
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+
                             <input class="form-control mb-3" type="password" placeholder="Contraseña" required asp-for="Contraseña" />
+                            <!-- Agrega ícono al campo de contraseña -->
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
                             <input type="file" class="form-control mb-3" name="Imagen" required>
+                            <!-- Agrega ícono al campo de imagen -->
+                            <span class="input-group-addon"><i class="fa fa-image"></i></span>
+
                             <div class="d-grid gap-2 mb-3">
-                                <button class="btn btn-primary" type="submit">Registrate</button>
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-user-plus"></i> Regístrate</button>
                             </div>
                             @if (ViewData["Mensaje"] != null)
                             {
-
                                 <div class="form-group">
                                     <div class="alert alert-danger" role="alert">
                                         @ViewData["Mensaje"]
                                     </div>
                                 </div>
                             }
-                            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion","Login")"> Iniciar Sesion</a>
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion","Login")" class="btn-link"> Iniciar Sesión</a>
 
                         </form>
 

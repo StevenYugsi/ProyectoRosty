@@ -47,7 +47,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Proveedor)</td>
                             <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Editar", "Gestion",
+                                <a onclick="showInPopup('@Url.Action("Editar", "Gestiones",
                                 new { id = item.IdGestion }, Context.Request.Scheme)' ,
                                   'Actualizar Gestion ')" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil-alt"></i>Editar

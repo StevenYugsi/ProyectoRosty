@@ -14,10 +14,10 @@ namespace ProyectoRosty.Controllers
         private readonly IServicioImagen _servicioImagen;
         private readonly LibreriaContext _context;
 
-        public LoginController(IServicioUsuario servicioUsuario,
+        public LoginController(IServicioUsuario ServicioUsuario,
             IServicioImagen servicioImagen, LibreriaContext context)
         {
-            _servicioUsuario = servicioUsuario;
+            _servicioUsuario = ServicioUsuario;
             _servicioImagen = servicioImagen;
             _context = context;
         }

@@ -17,6 +17,7 @@ builder.Services.AddScoped<IServicioBodegas, ServicioBodegas>();
 builder.Services.AddScoped<IServicioEmpleados, ServicioEmpleados>();
 builder.Services.AddScoped<IServicioGestiones, ServicioGestiones>();
 builder.Services.AddScoped<IServicioImagen, ServicioImagen>();
+builder.Services.AddScoped<IServicioUsuario, ServicioUsuario>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

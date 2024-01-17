@@ -12,7 +12,7 @@ namespace ProyectoRosty.Models.Entidades
         public string Nombre { get; set; }
         public int CantidadDisponible { get; set; }
         public decimal PrecioUnitario { get; set; }
-        public string FechaIngreso { get; set; }
+        public string FechaIngreso { get; set; }    
         public string Proveedor { get; set; }
         public string Descripcion { get; set; }
     }

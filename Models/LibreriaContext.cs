@@ -11,7 +11,6 @@ namespace ProyectoRosty.Models
 
         }
         public DbSet<Bodega> bodegas { get; set; }
-        public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Empleados> empleados { get; set; }
         public DbSet<GestionDeGaseosas> GestionDeGaseosas { get; set; }
         public DbSet<RegistroDeVentas> RegistroDeVentas { get; set; }

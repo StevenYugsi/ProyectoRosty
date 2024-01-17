@@ -48,43 +48,6 @@ namespace ProyectoRosty.Migrations
                     b.ToTable("bodegas");
                 });
 
-            modelBuilder.Entity("ProyectoRosty.Models.Entidades.Clientes", b =>
-                {
-                    b.Property<int>("IdCliente")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
-
-                    b.Property<string>("Contraseña")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("empleadosIdEmpleado")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idEmpleado")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idRol")
-                        .HasColumnType("int");
-
-                    b.Property<int>("rolesIdRol")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdCliente");
-
-                    b.HasIndex("empleadosIdEmpleado");
-
-                    b.HasIndex("rolesIdRol");
-
-                    b.ToTable("Clientes");
-                });
-
             modelBuilder.Entity("ProyectoRosty.Models.Entidades.Empleados", b =>
                 {
                     b.Property<int>("IdEmpleado")
@@ -157,12 +120,6 @@ namespace ProyectoRosty.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdVenta"));
 
-                    b.Property<int>("BodegaIdProducto")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClienteIdCliente")
-                        .HasColumnType("int");
-
                     b.Property<string>("DetalleVenta")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -171,9 +128,6 @@ namespace ProyectoRosty.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GestionDeGaseosasIdGestion")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("TotalVenta")
                         .HasColumnType("decimal(18,2)");
 
@@ -181,22 +135,7 @@ namespace ProyectoRosty.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idGestion")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idProducto")
-                        .HasColumnType("int");
-
                     b.HasKey("IdVenta");
-
-                    b.HasIndex("BodegaIdProducto");
-
-                    b.HasIndex("ClienteIdCliente");
-
-                    b.HasIndex("GestionDeGaseosasIdGestion");
 
                     b.ToTable("RegistroDeVentas");
                 });
@@ -230,10 +169,6 @@ namespace ProyectoRosty.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
 
-                    b.Property<string>("Cedula")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Contraseña")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -246,78 +181,12 @@ namespace ProyectoRosty.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Telefono")
-                        .IsRequired()
+                    b.Property<string>("URLFotoPerfil")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("idRol")
-                        .HasColumnType("int");
-
-                    b.Property<int>("rolesIdRol")
-                        .HasColumnType("int");
 
                     b.HasKey("IdUsuario");
 
-                    b.HasIndex("rolesIdRol");
-
                     b.ToTable("usuarios");
-                });
-
-            modelBuilder.Entity("ProyectoRosty.Models.Entidades.Clientes", b =>
-                {
-                    b.HasOne("ProyectoRosty.Models.Entidades.Empleados", "empleados")
-                        .WithMany()
-                        .HasForeignKey("empleadosIdEmpleado")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProyectoRosty.Models.Entidades.Roles", "roles")
-                        .WithMany()
-                        .HasForeignKey("rolesIdRol")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("empleados");
-
-                    b.Navigation("roles");
-                });
-
-            modelBuilder.Entity("ProyectoRosty.Models.Entidades.RegistroDeVentas", b =>
-                {
-                    b.HasOne("ProyectoRosty.Models.Entidades.Bodega", "Bodega")
-                        .WithMany()
-                        .HasForeignKey("BodegaIdProducto")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProyectoRosty.Models.Entidades.Clientes", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteIdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProyectoRosty.Models.Entidades.GestionDeGaseosas", "GestionDeGaseosas")
-                        .WithMany()
-                        .HasForeignKey("GestionDeGaseosasIdGestion")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Bodega");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("GestionDeGaseosas");
-                });
-
-            modelBuilder.Entity("ProyectoRosty.Models.Entidades.Usuarios", b =>
-                {
-                    b.HasOne("ProyectoRosty.Models.Entidades.Roles", "roles")
-                        .WithMany()
-                        .HasForeignKey("rolesIdRol")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("roles");
                 });
 #pragma warning restore 612, 618
         }

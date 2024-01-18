@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     @await RenderSectionAsync("Éstilos", required: false)
 </head>
-<body style="background-color: #ffd700;">
+<body style="background: linear-gradient(45deg, #ffd700, #ff5e00); background-color: #ffd700;">
 
     <header>
-        <nav class="navbar navbar-light bg-secondary">
+        <nav class="navbar navbar-light" style="background-color: #dc3545; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <div class="container-fluid">
-                <a class="navbar-brand text-light" href="#" style="font-size: 24px;"><i class="fas fa-drumstick-bite"></i> Rosty Pollos</a>
+                <a class="navbar-brand text-light" href="#" style="font-size: 24px;"> <i class="fas fa-drumstick-bite"></i> Rosty Pollos</a>
                 <button class="navbar-toggler text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="background-color: #fff;"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
@@ -28,26 +28,26 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <!-- Agrega íconos a los elementos del menú -->
                             <li class="nav-item">
-                                <a class="nav-link active" asp-controller="Home" asp-action="Index" style="color: #dc3545;"><i class="fas fa-home"></i> Inicio</a>
+                                <a class="nav-link active" asp-controller="Home" asp-action="Index" style="color: #dc3545; font-family: 'Arial Black', sans-serif; text-transform: uppercase;"><i class="fas fa-home"></i> Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #dc3545;"><i class="fas fa-utensils"></i> Menú</a>
+                                <a class="nav-link" href="#" style="color: #dc3545; font-family: 'Arial Black', sans-serif; text-transform: uppercase;"><i class="fas fa-utensils"></i> Menú</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #dc3545;">
+                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #dc3545; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">
                                     <i class="fas fa-list"></i> Categorías
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                    <li><a class="dropdown-item" asp-controller="Bodegas" asp-action="ListadoBodegas" style="color: #dc3545;"><i class="fas fa-box"></i> Productos</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Empleados" asp-action="ListadoEmpleados" style="color: #dc3545;"><i class="fas fa-users"></i> Empleados</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Gestiones" asp-action="ListadoGestiones" style="color: #dc3545;"><i class="fas fa-tasks"></i> Gestiones</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Bodegas" asp-action="ListadoBodegas" style="color: #dc3545; font-family: 'Arial', sans-serif;"><i class="fas fa-box"></i> Productos</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Empleados" asp-action="ListadoEmpleados" style="color: #dc3545; font-family: 'Arial', sans-serif;"><i class="fas fa-users"></i> Empleados</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Gestiones" asp-action="ListadoGestiones" style="color: #dc3545; font-family: 'Arial', sans-serif;"><i class="fas fa-tasks"></i> Gestiones</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" asp-controller="RegistroDeVentas" asp-action="ListadoBodegas" style="color: #dc3545;"><i class="fas fa-cash-register"></i> Ventas</a></li>
+                                    <li><a class="dropdown-item" asp-controller="RegistroDeVentas" asp-action="ListadoBodegas" style="color: #dc3545; font-family: 'Arial', sans-serif;"><i class="fas fa-cash-register"></i> Ventas</a></li>
                                 </ul>
                             </li>
                             <!-- Agrega el enlace de Cerrar Sesión -->
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CerrarSesion" style="color: #dc3545;"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CerrarSesion" style="color: #dc3545; font-family: 'Arial Black', sans-serif; text-transform: uppercase;"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                             </li>
                         </ul>
                     </div>
@@ -55,16 +55,19 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted" style="background-color: #dc3545;">
+
+    <footer class="border-top footer text-muted" style="background-color: #dc3545; color: #fff; padding: 10px 0;">
         <div class="container">
             &copy; 2023 - ProyectoRosty -  <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: #fff;">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

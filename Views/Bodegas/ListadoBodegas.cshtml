@@ -2,71 +2,143 @@
 @{
     ViewData["Title"] = "ListadoBodegas";
 }
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        <strong>Ok!!-----</strong>@TempData["AlertMessage"]
-    </div>
-}
-<p>
-    <a onclick="showInPopup('@Url.Action("Crear", "Bodegas",
-    new { id = 0 }, Context.Request.Scheme)' ,
-    '')" class="btn btn-sm btn-primary text-white">
-        <i class="fa fa-plus-circle"></i> Agregar un Producto
-    </a>
-</p>
 
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header text-center">
-            <h5>Listado de Productos</h5>
+<style>
+    body {
+        background-color: #ffd3d8; /* Palo de rosa */
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .alert {
+        background-color: #5cb85c; /* Verde para mensajes de éxito */
+        color: #ffffff;
+        border: 1px solid #4cae4c;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #428bca; /* Azul para botón principal */
+        border-color: #357ebd;
+    }
+
+        .btn-primary:hover {
+            background-color: #3071a9;
+            border-color: #285e8e;
+        }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #428bca; /* Azul para encabezado de tarjeta */
+        color: #ffffff;
+    }
+
+    table {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .btn-warning {
+        background-color: #f0ad4e; /* Amarillo para botón de editar */
+        border-color: #eea236;
+    }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+
+    .btn-danger {
+        background-color: #d9534f; /* Rojo para botón de eliminar */
+        border-color: #d43f3a;
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+</style>
+
+<div class="container">
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert" id="alertDiv">
+            <strong>Ok!!-----</strong>@TempData["AlertMessage"]
         </div>
-        <div class=" card-body">
-            <table id="productos" class="table table-hover table responsive table striped ">
-                <thead>
-                    <tr>
-                        <th scope="#">id</th>
-                        <th scope="Nombre Producto">Nombre Producto</th>
-                        <th scope="Cantidad">Cantidad</th>
-                        <th scope="Precio Unitario">Precio Unitario</th>
-                        <th scope="Fecha Ingreso">Fecha Ingreso</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+    }
+
+    <p>
+        <a onclick="showInPopup('@Url.Action("Crear", "Bodegas", new { id = 0 }, Context.Request.Scheme)' , '')" class="btn btn-sm btn-primary text-white">
+            <i class="fa fa-plus-circle"></i> Agregar un Producto
+        </a>
+    </p>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h5>Listado de Productos</h5>
+            </div>
+            <div class="card-body">
+                <table id="productos" class="table table-hover table-responsive table-striped">
+                    <thead>
                         <tr>
-                            <th scope="row">@item.IdProducto</th>
-                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PrecioUnitario)</td>
-                            <td>@Html.DisplayFor(modelItem => item.FechaIngreso)</td>
-                            <td>
-                                <a onclick="showInPopup('@Url.Action("Editar", "Bodegas",
+                            <th scope="#">id</th>
+                            <th scope="Nombre Producto">Nombre Producto</th>
+                            <th scope="Cantidad">Cantidad</th>
+                            <th scope="Precio Unitario">Precio Unitario</th>
+                            <th scope="Fecha Ingreso">Fecha Ingreso</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.IdProducto</th>
+                                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PrecioUnitario)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FechaIngreso)</td>
+                                <td>
+                                    <a onclick="showInPopup('@Url.Action("Editar", "Bodegas",
                                 new { id = item.IdProducto }, Context.Request.Scheme)' ,
                                   'Actualizar Autor')" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil-alt"></i>Editar
-                                </a>
-                                <button data-id="@item.IdProducto"
-                                        class="btn btn-danger btn-sm deleteItem"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#deleteDialog">
-                                    <i class="fa fa-trash"></i>Eliminar
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                                        <i class="fa fa-pencil-alt"></i>Editar
+                                    </a>
+                                    <button data-id="@item.IdProducto"
+                                            class="btn btn-danger btn-sm deleteItem"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteDialog">
+                                        <i class="fa fa-trash"></i>Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    <partial name="_MostrarModal" />
+    <partial name="_ModalEliminar" />
 </div>
-<partial name="_MostrarModal" />
-<partial name="_ModalEliminar" />
 
 @section Scripts {
-
     <script src="~/js/showmodal.js"></script>
 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -79,6 +151,20 @@
                         url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
                     },
                 });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var alertDiv = document.getElementById("alertDiv");
+
+            // Mostrar la alerta
+            alertDiv.style.display = "block";
+
+            // Ocultar la alerta después de 5 segundos
+            setTimeout(function () {
+                alertDiv.style.display = "none";
+            }, 5000);
         });
     </script>
 

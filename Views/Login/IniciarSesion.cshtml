@@ -10,13 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Iniciar Sesión - Asadero de Pollos</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- Agrega Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-qziP0qA1FqA9iZVbz0tRc+Yp/K3+ev2YWAHMS5ePv/4eJyQsB3JB2ldO32hHHKWI3X2MLYE1tprO5xdpG9xJBVQ==" crossorigin="anonymous" />
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-MQZXc5V5qoyaa1XxFJeNn4g7Oi6VHR24T8e7tIyIA34S66t5pZZ9NT6Sy38Mk3x9i5sLV/JFUdRkseuU/mQkgQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Agrega SweetAlert2 -->
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url('/img/WhatsApp%20Image%202024-01-23%20at%2010.21.45.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f8f9fa; 
+            margin: 0;
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .overlay {
@@ -115,6 +127,7 @@
                                 <button class="btn btn-primary" type="button" onclick="submitForm()"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
                             </div>
 
+
                             @if (ViewData["Mensaje"] != null)
                             {
                                 <div class="form-group">
@@ -138,6 +151,7 @@
             <span class="visually-hidden">Cargando...</span>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-mHgZmALlZlaZTUXCkJ06YVEp6cx5Y1TzhpBtsIi3eeQh1zWfB4v2nVWma1cz/5PlwVL0RXsUKFqUstXomVYoOQ==" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

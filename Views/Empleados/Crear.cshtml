@@ -3,35 +3,48 @@
     ViewData["title"] = "CrearEmpleados";
     Layout = null;
 }
-<div class=" col-md-12">
-    <div class=" card">
-        <div class=" card-header text-center">
-            <h5> Agregar un Empleado</h5>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header text-center bg-primary text-white">
+            <h5><i class="fa fa-plus-circle"></i> Agregar un Empleado</h5>
         </div>
-        <div class=" card-body text-center">
+        <div class="card-body text-center">
             <form asp-action="Crear">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label></label>
-                    <input asp-for="Nombre" class="form-control" placeholder=" Nombre Empleado" required />
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="Nombre" class="col-sm-2 col-form-label"><i class="fa fa-user"></i> Nombre Empleado</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre Empleado" required />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label></label>
-                    <input asp-for="Cargo" class="form-control" placeholder=" Cargo del Empleado" required />
-                    <span asp-validation-for="Cargo" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="Cargo" class="col-sm-2 col-form-label"><i class="fa fa-briefcase"></i> Cargo del Empleado</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Cargo" class="form-control" placeholder="Cargo del Empleado" required />
+                        <span asp-validation-for="Cargo" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label></label>
-                    <input asp-for="FechaDeContratacion" class="form-control" placeholder=" Fecha de Contratacion" required />
-                    <span asp-validation-for="FechaDeContratacion" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="FechaDeContratacion" class="col-sm-2 col-form-label"><i class="fa fa-calendar"></i> Fecha de Contratacion</label>
+                    <div class="col-sm-10">
+                        <input asp-for="FechaDeContratacion" class="form-control" placeholder="Fecha de Contratacion" required />
+                        <span asp-validation-for="FechaDeContratacion" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label></label>
-                    <input asp-for="Direccion" class="form-control" placeholder=" Direccion" required />
-                    <span asp-validation-for="Direccion" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="Direccion" class="col-sm-2 col-form-label"><i class="fa fa-map-marker"></i> Direccion</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Direccion" class="form-control" placeholder="Direccion" required />
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class=" card-footer ">
+
+                <div class="card-footer">
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Guardar</button>
                         <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>

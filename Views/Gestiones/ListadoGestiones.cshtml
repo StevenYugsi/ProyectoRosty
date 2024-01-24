@@ -8,31 +8,29 @@
         <strong>Ok!!-----</strong>@TempData["AlertMessage"]
     </div>
 }
-<p>
-    <a onclick="showInPopup('@Url.Action("Crear", "Gestiones",
-    new { id = 0 }, Context.Request.Scheme)' ,
-    '')" class="btn btn-sm btn-primary text-white">
-        <i class="fa fa-plus-circle"></i> Agregar una nueva Gestion de Gaseosa
-    </a>
-</p>
-
 <div class="col-md-12">
     <div class="card">
-        <div class="card-header text-center">
+        <div class="card-header text-center bg-primary text-white">
             <h5>Listado de Gestiones</h5>
         </div>
-        <div class=" card-body">
-            <table id="gestiones" class="table table-hover table responsive table striped ">
+        <div class="card-body">
+            <p>
+                <a onclick="showInPopup('@Url.Action("Crear", "Gestiones", new { id = 0 }, Context.Request.Scheme)' , '')"
+                   class="btn btn-sm btn-success text-white">
+                    <i class="fa fa-plus-circle"></i> Agregar una nueva Gestion de Gaseosa
+                </a>
+            </p>
+            <table id="gestiones" class="table table-hover table-responsive table-striped">
                 <thead>
                     <tr>
                         <th scope="#">Id</th>
-                        <th scope="Nombre ">Nombre</th>
+                        <th scope="Nombre">Nombre</th>
                         <th scope="Cantidad Disponible">Cantidad Disponible</th>
                         <th scope="Precio Unitario">Precio Unitario</th>
                         <th scope="Fecha Ingreso">Fecha Ingreso</th>
                         <th scope="Proveedor">Proveedor</th>
                         <th scope="Descripcion">Descripcion</th>
-                        <th></th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,16 +45,15 @@
                             <td>@Html.DisplayFor(modelItem => item.Proveedor)</td>
                             <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Editar", "Gestiones",
-                                new { id = item.IdGestion }, Context.Request.Scheme)' ,
-                                  'Actualizar Gestion ')" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil-alt"></i>Editar
+                                <a onclick="showInPopup('@Url.Action("Editar", "Gestiones", new { id = item.IdGestion }, Context.Request.Scheme)' , 'Actualizar Gestion ')"
+                                   class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil-alt"></i> Editar
                                 </a>
                                 <button data-id="@item.IdGestion"
                                         class="btn btn-danger btn-sm deleteItem"
                                         data-bs-toggle="modal"
                                         data-bs-target="#deleteDialog">
-                                    <i class="fa fa-trash"></i>Eliminar
+                                    <i class="fa fa-trash"></i> Eliminar
                                 </button>
                             </td>
                         </tr>
@@ -70,9 +67,7 @@
 <partial name="_ModalEliminar" />
 
 @section Scripts {
-
     <script src="~/js/showmodal.js"></script>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <script>
@@ -90,3 +85,4 @@
         sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Gestiones/Eliminar/', false);
     </script>
 }
+

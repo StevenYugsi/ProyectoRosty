@@ -15,7 +15,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-MQZXc5V5qoyaa1XxFJeNn4g7Oi6VHR24T8e7tIyIA34S66t5pZZ9NT6Sy38Mk3x9i5sLV/JFUdRkseuU/mQkgQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
+            background-image: url('/img/doodle-chicks-pascua-sin-costuras-patron-de-fondo-con-linda-mano-de-dibujos-animados-ilustracion-vectorial-dibujada-2e2h25m.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-color: #f8f9fa;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .card {
@@ -43,6 +54,7 @@
         .form-control {
             border: 1px solid #ced4da;
             border-radius: 5px;
+            padding-left: 40px;
         }
 
         .btn-primary {
@@ -63,39 +75,45 @@
             .btn-link:hover {
                 color: #c82333;
             }
+
+        /* Estilos específicos para íconos en los campos */
+        .input-group-addon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: #ced4da;
+        }
     </style>
 </head>
 <body>
 
     <div class="container mt-5 pt-5">
-
         <div class="row justify-content-center">
             <div class="col-12 col-xl-4 col-md-6">
-
                 <div class="card">
                     <div class="card-header">
                         <i class="fas fa-drumstick-bite"></i> 😁 Regístrate
                     </div>
                     <div class="card-body">
-
                         <form asp-controller="Login" asp-action="Registro" method="post" enctype="multipart/form-data">
-
-                            <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="Nombre" required />
-                            <!-- Agrega ícono al campo de nombre -->
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-
-                            <input class="form-control mb-3" type="text" placeholder="Correo" required asp-for="Correo" />
-                            <!-- Agrega ícono al campo de correo -->
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-
-                            <input class="form-control mb-3" type="password" placeholder="Contraseña" required asp-for="Contraseña" />
-                            <!-- Agrega ícono al campo de contraseña -->
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-
-                            <input type="file" class="form-control mb-3" name="Imagen" required>
-                            <!-- Agrega ícono al campo de imagen -->
-                            <span class="input-group-addon"><i class="fa fa-image"></i></span>
-
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="Nombre" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input class="form-control mb-3" type="text" placeholder="Correo" required asp-for="Correo" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input class="form-control mb-3" type="password" placeholder="Contraseña" required asp-for="Contraseña" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="fa fa-image"></i></span>
+                                <input type="file" class="form-control mb-3" name="Imagen" required>
+                            </div>
                             <div class="d-grid gap-2 mb-3">
                                 <button class="btn btn-primary" type="submit"><i class="fa fa-user-plus"></i> Regístrate</button>
                             </div>
@@ -108,16 +126,11 @@
                                 </div>
                             }
                             ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion","Login")" class="btn-link"> Iniciar Sesión</a>
-
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

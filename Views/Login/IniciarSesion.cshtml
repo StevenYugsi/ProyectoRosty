@@ -3,28 +3,24 @@
 }
 
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Iniciar Sesión - Asadero de Pollos</title>
+    <title>Mi Tienda - Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-qziP0qA1FqA9iZVbz0tRc+Yp/K3+ev2YWAHMS5ePv/4eJyQsB3JB2ldO32hHHKWI3X2MLYE1tprO5xdpG9xJBVQ==" crossorigin="anonymous" />
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-MQZXc5V5qoyaa1XxFJeNn4g7Oi6VHR24T8e7tIyIA34S66t5pZZ9NT6Sy38Mk3x9i5sLV/JFUdRkseuU/mQkgQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
         body {
-            background-image: url('/img/WhatsApp%20Image%202024-01-23%20at%2010.21.45.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-color: #f8f9fa; 
+            background-color: #000000;
             margin: 0;
-            height: 100vh; 
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -44,7 +40,7 @@
         }
 
         .card {
-            background-color: #ffd700;
+            background-color: #0000;
             border: 1px solid #ffd700;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -98,48 +94,69 @@
             .btn-link:hover {
                 color: #c82333;
             }
+
+        /* Estilos para la imagen */
+        .bg-login-image {
+            position: relative;
+        }
+
+            .bg-login-image img {
+                max-width: 100%; /* La imagen no será más ancha que su contenedor */
+                max-height: 300px; /* Altura máxima de la imagen */
+                border-radius: 15px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                object-fit: cover;
+                height: auto;
+            }
     </style>
 </head>
-<body>
+
+<body class="bg-gradient-info">
 
     <div class="overlay" id="overlay"></div>
 
     <div class="container mt-5 pt-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-xl-4 col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-drumstick-bite"></i> ROSTY POLLOS
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="bg-login-image">
+                        <!-- Puedes agregar tu imagen aquí -->
+                        <img src="/img/23.png" alt="Imagen Descriptiva" class="img-fluid">
                     </div>
-                    <div class="card-body">
-                        <form asp-controller="Login" asp-action="IniciarSesion" method="post" onsubmit="return onSubmit()" id="loginForm">
-                            <div class="input-group mb-3">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input class="form-control" type="text" placeholder="Correo" required name="correo" />
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div class="p-5">
+
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
                             </div>
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input class="form-control" type="password" placeholder="Contraseña" required name="contraseña" />
-                            </div>
-
-                            <div class="d-grid gap-2 mb-3">
-                                <button class="btn btn-primary" type="button" onclick="submitForm()"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
-                            </div>
-
-
-                            @if (ViewData["Mensaje"] != null)
-                            {
+                            <form asp-controller="Login" asp-action="IniciarSesion" method="post" onsubmit="return onSubmit()" id="loginForm">
                                 <div class="form-group">
-                                    <div class="alert alert-danger" role="alert">
-                                        @ViewData["Mensaje"]
-                                    </div>
+                                    <input class="form-control form-control-user" type="text" placeholder="Correo" required name="correo" />
                                 </div>
-                            }
+                                <br>
 
-                            ¿No tienes una cuenta? <a href="@Url.Action("Registro","Login")" class="btn-link">Regístrate</a>
-
-                        </form>
+                                <div class="form-group">
+                                    <input class="form-control form-control-user" type="password" placeholder="Contraseña" required name="contraseña" />
+                                </div>
+                                <br>
+                                <div class="d-grid gap-2 mb-3">
+                                    <button class="btn btn-primary" type="button" onclick="submitForm()"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
+                                </div>
+                                @if (ViewData["Mensaje"] != null)
+                                {
+                                    <div class="form-group">
+                                        <div class="alert alert-danger" role="alert">
+                                            @ViewData["Mensaje"]
+                                        </div>
+                                    </div>
+                                }
+                                ¿No tienes una cuenta? <a href="@Url.Action("Registro","Login")" class="btn-link">Regístrate</a>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,19 +174,17 @@
     <script>
         function onSubmit() {
             document.getElementById('overlay').style.display = 'block';
-            setTimeout(submitForm, 10000);  // Retraso de 10 segundos (10000 milisegundos)
-            return false;  // Evitar que el formulario se envíe inmediatamente
+            setTimeout(submitForm, 10000);
+            return false;
         }
 
         function submitForm() {
             document.getElementById('loadingIndicator').style.display = 'block';
-
             Swal.fire({
                 title: "¡Bienvenido!",
                 text: "¡Has iniciado sesión exitosamente! ¡Qué alegría tenerte aquí!",
                 icon: "success"
             });
-
             document.getElementById('loginForm').submit();
         }
 

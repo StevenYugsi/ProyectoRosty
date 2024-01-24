@@ -11,7 +11,7 @@ using ProyectoRosty.Models;
 namespace ProyectoRosty.Migrations
 {
     [DbContext(typeof(LibreriaContext))]
-    [Migration("20240124012623_rosty")]
+    [Migration("20240124151852_rosty")]
     partial class rosty
     {
         /// <inheritdoc />

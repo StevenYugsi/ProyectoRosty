@@ -4,37 +4,50 @@
     Layout = null;
 }
 <div class="col-md-12">
-    <div class="card rounded" style="background-color: #FFEBE6;">
-        <div class="card-header text-center rounded-top" style="background-color: #FFD699;">
+    <div class="card rounded" style="background-color: #adeef0;">
+        <div class="card-header text-center rounded-top" style="background-color: #5fbac4;">
             <h5 class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="fas fa-plus-circle"></i> Agregar un Producto</h5>
         </div>
         <div class="card-body text-center">
             <form asp-action="Crear">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label style="color: #FF6666;" class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="fas fa-tag"></i> Nombre del Producto</label>
-                    <input asp-for="Nombre" class="form-control rounded" placeholder="Nombre del Producto" required />
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="Nombre" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fas fa-tag"></i> Nombre del Producto</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Nombre" class="form-control rounded" placeholder="Nombre del Producto" required />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label style="color: #FF6666;" class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="fas fa-sort-numeric-up"></i> Cantidad</label>
-                    <input asp-for="Cantidad" class="form-control rounded" placeholder="Cantidad" required />
-                    <span asp-validation-for="Cantidad" class="number text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="Cantidad" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fas fa-sort-numeric-up"></i> Cantidad</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Cantidad" class="form-control rounded" placeholder="Cantidad" required />
+                        <span asp-validation-for="Cantidad" class="number text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label style="color: #FF6666;" class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="fas fa-dollar-sign"></i> Precio Unitario</label>
-                    <input asp-for="PrecioUnitario" class="form-control rounded" placeholder="Precio Unitario" required />
-                    <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="PrecioUnitario" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fas fa-dollar-sign"></i> Precio Unitario</label>
+                    <div class="col-sm-10">
+                        <input asp-for="PrecioUnitario" class="form-control rounded" placeholder="Precio Unitario" required />
+                        <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label style="color: #FF6666;" class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="far fa-calendar-alt"></i> Fecha de Ingreso del Producto</label>
-                    <input asp-for="FechaIngreso" class="form-control rounded" placeholder="Fecha de Ingreso del Producto" required />
-                    <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+
+                <div class="form-group row mb-3">
+                    <label for="FechaIngreso" class="col-sm-2 col-form-label" style="color: #130000;"><i class="far fa-calendar-alt"></i> Fecha de Ingreso del Producto</label>
+                    <div class="col-sm-10">
+                        <input asp-for="FechaIngreso" class="form-control rounded" placeholder="Fecha de Ingreso del Producto" required />
+                        <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                    </div>
                 </div>
+
                 <div class="card-footer rounded-bottom" style="background-color: #0000;">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-sm btn-outline-success btn-3d"><i class="fas fa-save"></i> Guardar</button>
-                        <button type="button" class="btn btn-sm btn-outline-primary btn-3d" data-bs-dismiss="modal"><i class="fas fa-ban"></i> Cancelar</button>
+                        <button type="submit" class="btn btn-lg btn-outline-success btn-3d" style="margin-right: 80px;"><i class="fas fa-save"></i> Guardar</button>
+                        <button type="button" class="btn btn-lg btn-outline-danger btn-3d" data-bs-dismiss="modal"><i class="fas fa-ban"></i> Cancelar</button>
                     </div>
                 </div>
             </form>

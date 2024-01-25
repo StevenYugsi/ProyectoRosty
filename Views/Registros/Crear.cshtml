@@ -1,0 +1,55 @@
+﻿@model ProyectoRosty.Models.Entidades.RegistroDeVentas
+@{
+    ViewData["title"] = "CrearRegistro";
+    Layout = null;
+}
+<div class="col-md-12">
+    <div class="card rounded" style="background-color: #adeef0;">
+        <div class="card-header text-center rounded-top" style="background-color: #5fbac4;">
+            <h5 class="font-italic text-uppercase" style="font-family: 'Segoe Script', cursive;"><i class="fa fa-plus-circle"></i> Agregar una nueva Venta</h5>
+        </div>
+        <div class="card-body text-center">
+            <form asp-action="Crear">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group row mb-3">
+                    <label for="Venta" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fa fa-tag"></i> Venta</label>
+                    <div class="col-sm-10">
+                        <input asp-for="VentasDiarias" class="form-control rounded" placeholder="Venta" required />
+                        <span asp-validation-for="VentasDiarias" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label for="DetalleVenta" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fa fa-shopping-cart"></i> Detalle Venta</label>
+                    <div class="col-sm-10">
+                        <input asp-for="DetalleVenta" class="form-control rounded" placeholder="Detalle Venta" required />
+                        <span asp-validation-for="DetalleVenta" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label for="FechaVenta" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fa fa-dollar-sign"></i> Fecha de Venta</label>
+                    <div class="col-sm-10">
+                        <input asp-for="FechaDeVenta" class="form-control rounded" placeholder="Fecha de Venta" required />
+                        <span asp-validation-for="FechaDeVenta" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label for="TotalVenta" class="col-sm-2 col-form-label" style="color: #130000;"><i class="fa fa-calendar"></i> Total de la Venta</label>
+                    <div class="col-sm-10">
+                        <input asp-for="TotalVenta" class="form-control rounded" placeholder="Total de la Venta" required />
+                        <span asp-validation-for="TotalVenta" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer rounded-bottom" style="background-color: #0000;">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-outline-success btn-3d" style="margin-right: 80px;"><i class="fa fa-save"></i> Guardar</button>
+                        <button type="button" class="btn btn-lg btn-outline-danger btn-3d" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                </div>  
+            </form>
+        </div>
+    </div>
+</div>

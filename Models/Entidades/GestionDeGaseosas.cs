@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProyectoRosty.Models.Entidades
 {
@@ -15,6 +16,7 @@ namespace ProyectoRosty.Models.Entidades
         public string FechaIngreso { get; set; }    
         public string Proveedor { get; set; }
         public string Descripcion { get; set; }
+       
     }
 
 }

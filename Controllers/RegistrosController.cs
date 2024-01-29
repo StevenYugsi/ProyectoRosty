@@ -18,27 +18,31 @@ namespace ProyectoRosty.Controllers
             _context = context;
             _servicioLista = servicioLista;
         }
-        public async Task<IActionResult> ListadoRegistro()
+        //public async Task<IActionResult> ListadoRegistro()
+
+        //{
+        //    return View(await _context.RegistroDeVentas.ToListAsync());
+        //}
+        public async Task<IActionResult> Lista()
         {
-            return View(await _context.RegistroDeVentas.ToListAsync());
+            return View(await _context.RegistroDeVentas
+                .Include(l => l.GestionDeGaseosas)
+                //.Include(l => l.autor)
+                .ToListAsync()
+                );
         }
-        public IActionResult Crear()
+        public async Task< IActionResult >Crear()
 
         {
-
-            return View();
-
-
-        }
-        private async Task<GestionDeGaseosas> GetGestion()
-        {
-            return new GestionDeGaseosas()
+            RegistroDeVentas registroDeVenta = new()
             {
-                IdGestion = await _servicioLista.GetListaGestiones()
-                //Autores = await _servicioLista.GetListaAutores(),
-                //Editoriales = await _servicioLista.GetListaEditoriales()
+                Bodega = (Bodega)await _servicioLista.GetListaProductos(),
             };
+            return View(registroDeVenta);
+
+
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> Crear(RegistroDeVentas registroDeVentas)
@@ -136,6 +140,11 @@ namespace ProyectoRosty.Controllers
             }
             return RedirectToAction(nameof(ListadoRegistro));
 
+        }
+
+        private object ListadoRegistro()
+        {
+            throw new NotImplementedException();
         }
     }
 }

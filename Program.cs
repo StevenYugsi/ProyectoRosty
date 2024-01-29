@@ -20,6 +20,8 @@ builder.Services.AddScoped<IServicioRegistros, ServicioRegistro>();
 builder.Services.AddScoped<IServicioImagen, ServicioImagen>();
 builder.Services.AddScoped<IServicioUsuario, ServicioUsuario>();
 builder.Services.AddScoped<IServicioRoles, ServicioRoles>();
+builder.Services.AddScoped<IServicioLista, ServicioLista>();
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

@@ -43,12 +43,18 @@
                         <span asp-validation-for="TotalVenta" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="idGestion">gestion</label>
+                    <select class="form-select form-select-sm" asp-for="idGestion" asp-items="@Model.Gestiones">
+                        <option selected disabled> --Seleccionar--</option>
+                    </select>
+                </div>
                 <div class="card-footer rounded-bottom" style="background-color: #0000;">
                     <div class="form-group">
                         <button type="submit" class="btn btn-lg btn-outline-success btn-3d" style="margin-right: 80px;"><i class="fa fa-save"></i> Guardar</button>
                         <button type="button" class="btn btn-lg btn-outline-danger btn-3d" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
                     </div>
-                </div>  
+                </div>
             </form>
         </div>
     </div>

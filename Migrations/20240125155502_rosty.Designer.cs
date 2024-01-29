@@ -11,7 +11,7 @@ using ProyectoRosty.Models;
 namespace ProyectoRosty.Migrations
 {
     [DbContext(typeof(LibreriaContext))]
-    [Migration("20240124151852_rosty")]
+    [Migration("20240125155502_rosty")]
     partial class rosty
     {
         /// <inheritdoc />
@@ -123,6 +123,9 @@ namespace ProyectoRosty.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdVenta"));
 
+                    b.Property<int>("BodegaIdProducto")
+                        .HasColumnType("int");
+
                     b.Property<string>("DetalleVenta")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -131,6 +134,9 @@ namespace ProyectoRosty.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GestionDeGaseosasIdGestion")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("TotalVenta")
                         .HasColumnType("decimal(18,2)");
 
@@ -138,7 +144,17 @@ namespace ProyectoRosty.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("idGestion")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idProducto")
+                        .HasColumnType("int");
+
                     b.HasKey("IdVenta");
+
+                    b.HasIndex("BodegaIdProducto");
+
+                    b.HasIndex("GestionDeGaseosasIdGestion");
 
                     b.ToTable("RegistroDeVentas");
                 });
@@ -190,6 +206,25 @@ namespace ProyectoRosty.Migrations
                     b.HasKey("IdUsuario");
 
                     b.ToTable("usuarios");
+                });
+
+            modelBuilder.Entity("ProyectoRosty.Models.Entidades.RegistroDeVentas", b =>
+                {
+                    b.HasOne("ProyectoRosty.Models.Entidades.Bodega", "Bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaIdProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProyectoRosty.Models.Entidades.GestionDeGaseosas", "GestionDeGaseosas")
+                        .WithMany()
+                        .HasForeignKey("GestionDeGaseosasIdGestion")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bodega");
+
+                    b.Navigation("GestionDeGaseosas");
                 });
 #pragma warning restore 612, 618
         }

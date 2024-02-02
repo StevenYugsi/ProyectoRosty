@@ -23,7 +23,7 @@ namespace ProyectoRosty.Controllers
         //{
         //    return View(await _context.RegistroDeVentas.ToListAsync());
         //}
-        public async Task<IActionResult> Lista()
+        public async Task<IActionResult> ListadoRegistro()
         {
             return View(await _context.RegistroDeVentas
                 .Include(l => l.GestionDeGaseosas)
@@ -31,19 +31,52 @@ namespace ProyectoRosty.Controllers
                 .ToListAsync()
                 );
         }
-        public async Task< IActionResult >Crear()
+        //public async Task< IActionResult >Crear()
 
+        //{
+        //    RegistroDeVentas registroDeVenta = new()
+        //    {
+        //        Bodega = (Bodega)await _servicioLista.GetListaProductos(),
+        //    };
+        //    return View(registroDeVenta);
+
+
+        //}
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Crear(RegistroDeVentas registroDeVentas)
+        //{
+        //    var gestionDeGaseosas = _context.GestionDeGaseosas.ToList();
+
+        //    IEnumerable<SelectListItem> gestionSelectList = gestionDeGaseosas
+        //        .Select(g => new SelectListItem { Value = g.IdGestion.ToString(), Text = g.Nombre });
+
+        //    var modelo = new RegistroDeVentas
+        //    {
+        //        GestionDeGaseosas = (GestionDeGaseosas)gestionSelectList,
+        //        // Otras propiedades de RegistroDeVentas que puedas necesitar inicializar aquí
+        //    };
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(registroDeVentas);
+        //        await _context.SaveChangesAsync();
+        //        TempData["AlertMessage"] = "Registro de Venta Creado Exitosamente";
+        //        return RedirectToAction("ListadoRegistro");
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError(String.Empty, "Ha ocurrido un error");
+        //    }
+        //    return View();
+        //}
+        public async Task<IActionResult> Crear()
         {
-            RegistroDeVentas registroDeVenta = new()
-            {
-                Bodega = (Bodega)await _servicioLista.GetListaProductos(),
-            };
-            return View(registroDeVenta);
-
-
+            RegistroDeVentas registroDeVentas = new RegistroDeVentas();
+            Bodega bodega = (Bodega)await _servicioLista.GetListaProductos();
+            return View(registroDeVentas);
         }
-        
-
         [HttpPost]
         public async Task<IActionResult> Crear(RegistroDeVentas registroDeVentas)
         {
@@ -142,9 +175,9 @@ namespace ProyectoRosty.Controllers
 
         }
 
-        private object ListadoRegistro()
-        {
-            throw new NotImplementedException();
-        }
+        //private object ListadoRegistro()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -41,7 +41,6 @@ namespace ProyectoRosty.Services
             })
                .OrderBy(x => x.Text)
                .ToListAsync();
-
             list.Insert(0, new SelectListItem
             {
                 Text = "[Seleccione un producto...]",

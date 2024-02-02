@@ -5,7 +5,7 @@
 namespace ProyectoRosty.Migrations
 {
     /// <inheritdoc />
-    public partial class rosty : Migration
+    public partial class Rosty : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoRosty.Models.Entidades
@@ -16,12 +15,12 @@ namespace ProyectoRosty.Models.Entidades
         public string DetalleVenta { get; set; }
         public string FechaDeVenta { get; set; }
         public decimal TotalVenta { get; set; }
-        public int idProducto { get; set; }
-        public int idGestion { get; set; }
-        public Bodega Bodega { get; set; }
-        public GestionDeGaseosas GestionDeGaseosas { get; set; }
-        [NotMapped]
-        public IEnumerable<SelectListItem> Gestiones { get; set; }
+        //public int idProducto { get; set; }
+        //public int idGestion { get; set; }
+        //public Bodega Bodega { get; set; }
+        //public GestionDeGaseosas GestionDeGaseosas { get; set; }
+        //[NotMapped]
+        //public IEnumerable<SelectListItem> Gestiones { get; set; }
     }
 }
 

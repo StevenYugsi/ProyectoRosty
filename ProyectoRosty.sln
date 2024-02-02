@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoRosty", "ProyectoRosty.csproj", "{667375AC-D7D4-4642-9C78-849799348261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoRosty", "ProyectoRosty.csproj", "{667375AC-D7D4-4642-9C78-849799348261}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4C27F18B-AD53-4282-9A1B-8BE66A3E9068}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

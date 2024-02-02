@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProyectoRosty.Models;
 using ProyectoRosty.Models.Entidades;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProyectoRosty.Services
 {
@@ -14,11 +13,11 @@ namespace ProyectoRosty.Services
             _context = context;
         }
 
-         public async Task<RegistroDeVentas> GetRegistroDeVentas(string VentasDiarias, string DetalleVenta, string FechaDeVenta, decimal TotalVenta, int idProducto, int idGestion)
+        public async Task<RegistroDeVentas> GetRegistroDeVentas(string VentasDiarias, string DetalleVenta, string FechaDeVenta, decimal TotalVenta)
         {
             RegistroDeVentas registroDeVentas = await _context.RegistroDeVentas.Where
-                   (u => u.VentasDiarias == VentasDiarias && u.DetalleVenta == DetalleVenta && u.FechaDeVenta == FechaDeVenta
-              && u.TotalVenta == TotalVenta && u.idProducto==idProducto && u.idGestion==idGestion).FirstOrDefaultAsync();
+                  (u => u.VentasDiarias == VentasDiarias && u.DetalleVenta == DetalleVenta && u.FechaDeVenta == FechaDeVenta
+             && u.TotalVenta == TotalVenta).FirstOrDefaultAsync();
             return registroDeVentas;
         }
 
@@ -26,8 +25,6 @@ namespace ProyectoRosty.Services
         {
             return await _context.RegistroDeVentas.FirstOrDefaultAsync(u => u.VentasDiarias == nombreVenta);
         }
-
-       
 
         public async Task<RegistroDeVentas> SaveRegistroDeVentas(RegistroDeVentas VentasDiarias)
         {

@@ -1,96 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProyectoRosty.Models;
 using ProyectoRosty.Models.Entidades;
-using ProyectoRosty.Services;
 
 namespace ProyectoRosty.Controllers
 {
     public class RegistrosController : Controller
     {
-        private readonly IServicioLista _servicioLista;
-
         private readonly LibreriaContext _context;
 
-        public RegistrosController(IServicioLista servicioLista, LibreriaContext context)
+        public RegistrosController(LibreriaContext context)
         {
             _context = context;
-            _servicioLista = servicioLista;
         }
-        //public async Task<IActionResult> ListadoRegistro()
-
-        //{
-        //    return View(await _context.RegistroDeVentas.ToListAsync());
-        //}
         public async Task<IActionResult> ListadoRegistro()
         {
-            return View(await _context.RegistroDeVentas
-                .Include(l => l.GestionDeGaseosas)
-                //.Include(l => l.autor)
-                .ToListAsync()
-                );
+            return View(await _context.RegistroDeVentas.ToListAsync());
         }
-        //public async Task< IActionResult >Crear()
-
-        //{
-        //    RegistroDeVentas registroDeVenta = new()
-        //    {
-        //        Bodega = (Bodega)await _servicioLista.GetListaProductos(),
-        //    };
-        //    return View(registroDeVenta);
-
-
-        //}
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> Crear(RegistroDeVentas registroDeVentas)
-        //{
-        //    var gestionDeGaseosas = _context.GestionDeGaseosas.ToList();
-
-        //    IEnumerable<SelectListItem> gestionSelectList = gestionDeGaseosas
-        //        .Select(g => new SelectListItem { Value = g.IdGestion.ToString(), Text = g.Nombre });
-
-        //    var modelo = new RegistroDeVentas
-        //    {
-        //        GestionDeGaseosas = (GestionDeGaseosas)gestionSelectList,
-        //        // Otras propiedades de RegistroDeVentas que puedas necesitar inicializar aquí
-        //    };
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(registroDeVentas);
-        //        await _context.SaveChangesAsync();
-        //        TempData["AlertMessage"] = "Registro de Venta Creado Exitosamente";
-        //        return RedirectToAction("ListadoRegistro");
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError(String.Empty, "Ha ocurrido un error");
-        //    }
-        //    return View();
-        //}
-        public async Task<IActionResult> Crear()
+        public IActionResult Crear()
         {
-            RegistroDeVentas registroDeVentas = new RegistroDeVentas();
-            Bodega bodega = (Bodega)await _servicioLista.GetListaProductos();
-            return View(registroDeVentas);
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Crear(RegistroDeVentas registroDeVentas)
         {
-            var gestionDeGaseosas = _context.GestionDeGaseosas.ToList();
-
-            IEnumerable<SelectListItem> gestionSelectList = gestionDeGaseosas
-                .Select(g => new SelectListItem { Value = g.IdGestion.ToString(), Text = g.Nombre });
-
-            var modelo = new RegistroDeVentas
-            {
-                GestionDeGaseosas = (GestionDeGaseosas)gestionSelectList,
-                // Otras propiedades de RegistroDeVentas que puedas necesitar inicializar aquí
-            };
-
             if (ModelState.IsValid)
             {
                 _context.Add(registroDeVentas);
@@ -174,10 +107,5 @@ namespace ProyectoRosty.Controllers
             return RedirectToAction(nameof(ListadoRegistro));
 
         }
-
-        //private object ListadoRegistro()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
